@@ -96,7 +96,7 @@ def person_blocker(args):
     noisy_color = create_noisy_color(image, mask_color)
     image_masked[mask_selected > 0] = noisy_color[mask_selected > 0]
 
-    imageio.imwrite('person_blocked.png', image_masked)
+    imageio.imwrite('./static/person_blocked.png', image_masked)
 
     # Create GIF. The noise will be random for each frame,
     # which creates a "static" effect
@@ -110,7 +110,7 @@ def person_blocker(args):
         new_image[mask_selected > 0] = noisy_color[mask_selected > 0]
         images.append(new_image)
 
-    imageio.mimsave('person_blocked.gif', images, fps=30., subrectangles=True)
+    imageio.mimsave('./static/person_blocked.gif', images, fps=30., subrectangles=True)
 
 
 if __name__ == '__main__':
