@@ -58,19 +58,32 @@ def upload_file():
             subprocess.call(cmd_str, shell=True)
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            cmd_str = 'python person_blocker.py -i static/' + filename
-            subprocess.call(cmd_str, shell=True)
-            ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 8))
+            objectName = request.form.get('objectName')
+            if(objectName==""):
+                cmd_str = 'python person_blocker.py -i static/' + filename
+                subprocess.call(cmd_str, shell=True)
+            else:
+                cmd_str = 'python person_blocker.py -i static/' + filename + ' -o \'' + objectName + '\''
+                subprocess.call(cmd_str, shell=True)
 
+
+            ran_str = ''.join(random.sample(string.ascii_letters + string.digits, 8))
             cmd_str = 'mv static/person_blocked.png static/pb' + filename.rsplit('.', 1)[0] +ran_str+'.png'
             subprocess.call(cmd_str, shell=True)
+            
+
             return '''
             <!doctype html>
-            <title>Upload new File</title>
-            <h1>Upload new File</h1>
+            <title>Person-Blocker</title>
+            <h1>Person-Blocker</h1>
             <form method=post enctype=multipart/form-data>
-              <p><input type=file name=file>
-                 <input type=submit value=Upload>
+                上傳圖片檔案:
+                <input type=file name=file> 
+                <br><br>
+                想要遮蔽的物件名稱:
+                <input type="textbox" name="objectName">
+                <br><br>
+                <input type=submit value=Upload>
             </form>
             <img src="static/pb'''+filename.rsplit('.', 1)[0]+ran_str+'''.png" alt="personBlocker"  width="600">
         
@@ -78,10 +91,15 @@ def upload_file():
             
     return '''
     <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
+    <title>Person-Blocker</title>
+    <h1>Person-Blocker</h1>
     <form method=post enctype=multipart/form-data>
-      <p><input type=file name=file>
+         上傳圖片檔案:
+         <input type=file name=file> 
+         <br><br>
+         想要遮蔽的物件名稱:
+         <input type="textbox" name="objectName">
+         <br><br>
          <input type=submit value=Upload>
     </form>
 
