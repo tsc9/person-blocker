@@ -145,7 +145,7 @@ def display_instances(image, boxes, masks, class_ids, class_names,
 
     ax.imshow(masked_image.astype(np.uint8))
     #plt.show()
-    plt.savefig('person_blocked_labels.png', bbox_inches='tight')
+    plt.savefig('./static/person_blocked.png', bbox_inches='tight')
     
 
 def draw_rois(image, rois, refined_rois, mask, class_ids, class_names, limit=10):
