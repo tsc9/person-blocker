@@ -18,6 +18,12 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 
 
 @app.route('/personBlocker/<string:s>')
@@ -61,8 +67,14 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             objectName = request.form.get('objectName').lower()
-            if(objectName==""):
+            if(objectName=="blockPerson"):
                 cmd_str = 'python person_blocker.py -i static/' + filename
+                subprocess.call(cmd_str, shell=True)
+            elif (objectName=="label"):
+                cmd_str = 'python person_blocker.py -i static/' + filename + ' -l'
+                subprocess.call(cmd_str, shell=True)
+            elif(is_number(objectName)):
+                cmd_str = 'python person_blocker.py -i static/' + filename + ' -o ' + objectName
                 subprocess.call(cmd_str, shell=True)
             else:
                 cmd_str = 'python person_blocker.py -i static/' + filename + ' -o \'' + objectName + '\''
