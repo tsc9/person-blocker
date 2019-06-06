@@ -67,7 +67,7 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             objectName = request.form.get('objectName').lower()
-            if(objectName=="blockPerson"):
+            if(objectName==""):
                 cmd_str = 'python person_blocker.py -i static/' + filename
                 subprocess.call(cmd_str, shell=True)
             elif (objectName=="label"):
