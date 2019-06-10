@@ -46,6 +46,15 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+@app.route('/classes/',methods=['GET', 'POST'])
+def get_classpng():
+    return '''<!doctype html>
+    <title>classes</title>
+    <h1>可遮蔽物件中英對照列表</h1>
+    <img src="http://0.0.0.0:9489/static/class.png" width="700">
+
+'''
+
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     imgSrc = ""
@@ -62,8 +71,8 @@ def upload_file():
             flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            cmd_str = 'rm -rf static/*'
-            subprocess.call(cmd_str, shell=True)
+            #cmd_str = 'rm -rf static/*'
+            #subprocess.call(cmd_str, shell=True)
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             objectName = request.form.get('objectName').lower()
