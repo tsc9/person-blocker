@@ -14,6 +14,10 @@ https://youtu.be/jeU8TdQukQk
 ![img4](example_output/demo1.png)
 ![img4](example_output/demo2.png)
 ![img4](example_output/demo3.png)
+![img4](example_output/demo4.png)
+![img4](example_output/demo5.png)
+![img4](example_output/demo6.png)
+
 
 除了遮蔽人物，可遮蔽物件種類如下：
 ![img4](example_output/class.png)
