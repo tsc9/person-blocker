@@ -1,13 +1,25 @@
 # Person Blocker
 國立臺北大學 軟體工程專案
-Youtube Demo 影片:
+Youtube Demo 影片（裡面有使用方法）:
 https://youtu.be/jeU8TdQukQk
+
+改進構想：
+使用 Python 的 Flask 做一個 Web Service：
+提供
+1.  上傳圖片功能
+2.  設定功能（設定需要遮蔽的東西)
+3.  顯示屏蔽之後的圖片 (讓使用者可以下載)
+優點：可以讓更多使用者透過網頁來使用這些功能，使用者不需要先去安裝很多東西
 
 ![img4](example_output/demo1.png)
 ![img4](example_output/demo2.png)
 ![img4](example_output/demo3.png)
-![img4](example_output/class.png)
 
+除了遮蔽人物，可遮蔽物件種類如下：
+![img4](example_output/class.png)
+=====================================================
+
+=====================================================
 
 ![img4](example_output/img4_blocked.gif)
 
