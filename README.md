@@ -5,7 +5,7 @@ https://youtu.be/jeU8TdQukQk
 
 改進構想：
 使用 Python 的 Flask 做一個 Web Service：
-網頁使用者介面提供
+提供
 1.  上傳圖片功能
 2.  設定功能（設定需要遮蔽的東西)
 3.  顯示屏蔽之後的圖片 (讓使用者可以下載)
@@ -17,6 +17,9 @@ https://youtu.be/jeU8TdQukQk
 
 除了遮蔽人物，可遮蔽物件種類如下：
 ![img4](example_output/class.png)
+
+
+
 
 ![img4](example_output/img4_blocked.gif)
 
