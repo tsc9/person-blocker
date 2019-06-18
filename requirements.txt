@@ -5,3 +5,4 @@ keras
 scipy
 scikit-image
 tensorflow
+flask
